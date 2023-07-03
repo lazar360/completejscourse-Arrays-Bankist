@@ -99,10 +99,14 @@ console.log('movements', movements);
 console.log('deposit', deposits);
 console.log('withdrawal', withdrawal);
 
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  return acc + cur;
+}, 0);
+
+console.log(balance);
 
 ////////////////////////////////
 // LECTURES
-
 
 //const eurToUsd = 1.1;
 
