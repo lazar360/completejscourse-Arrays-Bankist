@@ -61,6 +61,30 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  movements.forEach(function (mov, i) {
+    const html = `
+      <div class="movements__row">
+          <div class="movements__type movements__type--deposit">${i}</div>
+          <div class="movements__value">${mov}</div>
+        </div>
+      `;
+  });
+};
+
+// const displayMovements2 = function (movements) {
+//   for(const[i, mov] of movements.entries()) {
+//     const html = `
+//       <div class="movements__row">
+//           <div class="movements__type movements__type--deposit">${i}</div>
+//           <div class="movements__value">${mov}</div>
+//         </div>
+//       `;
+//   };
+// };
+
+displayMovements(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -142,13 +166,13 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-currencies.forEach(function (value, key, map){
-console.log(`${key} ${value}`);
+currencies.forEach(function (value, key, map) {
+  console.log(`${key} ${value}`);
 });
 
 // Set
 const currenciesUnique = new Set(['USD', 'EUR', 'USD', 'EUR', 'EUR', 'EUR']);
 console.log(currenciesUnique);
-currenciesUnique.forEach(function (value, _, map){
+currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value} ${value}`);
 });
