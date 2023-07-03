@@ -62,15 +62,23 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
       <div class="movements__row">
-          <div class="movements__type movements__type--deposit">${i + 1}</div>
-          <div class="movements__value">${mov}</div>
+          <div class="movements__type movements__type--${type}">
+            ${i + 1} ${type}
+          </div>
+          <div class="movements__value">
+            ${mov}
+          </div>
         </div>
       `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
+displayMovements(account1.movements);
 
 // const displayMovements2 = function (movements) {
 //   for(const[i, mov] of movements.entries()) {
@@ -82,8 +90,6 @@ const displayMovements = function (movements) {
 //       `;
 //   };
 // };
-
-displayMovements(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -160,19 +166,60 @@ displayMovements(account1.movements);
 //   );
 // });
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-currencies.forEach(function (value, key, map) {
-  console.log(`${key} ${value}`);
-});
+// currencies.forEach(function (value, key, map) {
+//   console.log(`${key} ${value}`);
+// });
 
 // Set
-const currenciesUnique = new Set(['USD', 'EUR', 'USD', 'EUR', 'EUR', 'EUR']);
-console.log(currenciesUnique);
-currenciesUnique.forEach(function (value, _, map) {
-  console.log(`${value} ${value}`);
-});
+// const currenciesUnique = new Set(['USD', 'EUR', 'USD', 'EUR', 'EUR', 'EUR']);
+// console.log(currenciesUnique);
+// currenciesUnique.forEach(function (value, _, map) {
+//   console.log(`${value} ${value}`);
+// });
+
+// TEST DATA 1
+let juliaDatas = [3, 5, 2, 12, 7];
+let kateDatas = [4, 1, 15, 8, 3];
+const copyArray = function(arr){
+  const arrCopy = [...arr];
+  return arrCopy  
+};
+const suppressFirstAndLastTwo = function(arr){
+  const arrCorrected = arr.slice(1, -2);
+  return arrCorrected
+};
+
+const kateDatas2 = copyArray(kateDatas);
+const juliaDatasCorrected = suppressFirstAndLastTwo(juliaDatas);
+
+console.log('TEST DATA 1');
+const checkDogs = function (dogs) {
+  for (const [i, dogAge] of dogs.entries()) {
+    console.log(
+      `Dog number ${i + 1} is ${
+        dogAge > 1 ? 'an adult ' : 'still a puppy '
+      } and he is ${dogAge} years old`
+    );
+  }
+};
+console.log('checkDogs(juliaDatasCorrected) :');
+checkDogs(juliaDatasCorrected);
+console.log('checkDogs(kateDatas2) :');
+checkDogs(kateDatas2);
+
+// TEST DATA 2
+console.log('TEST DATA 2');
+juliaDatas = [9,16,6,8,3];
+kateDatas = [10,5,6,1,4];
+const kateDatas3 = copyArray(kateDatas);
+const juliaDatasCorrected2 = suppressFirstAndLastTwo(juliaDatas);
+console.log('checkDogs(juliaDatasCorrected2) :');
+checkDogs(juliaDatasCorrected2);
+console.log('checkDogs(kateDatas3) :');
+checkDogs(kateDatas3);
