@@ -71,14 +71,39 @@ const displayMovements = function (movements) {
             ${i + 1} ${type}
           </div>
           <div class="movements__value">
-            ${mov}
+          ${mov}
           </div>
-        </div>
-      `;
+          </div>
+          `;
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
 displayMovements(account1.movements);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * eurToUsd;
+// })
+
+const movementsUSD = movements.map(mov => mov * eurToUsd);
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) {
+  movementsUSDfor.push(mov * eurToUsd);
+}
+console.log(movementsUSDfor);
+
+movements.map((mov, i, arr) => {
+  console.log(
+    `Movement ${i + 1} : You ${mov > 0 ? 'deposited' : 'withdrew'} ${
+      mov > 0 ? mov : Math.abs(mov)
+    }`
+  );
+});
 
 // const displayMovements2 = function (movements) {
 //   for(const[i, mov] of movements.entries()) {
@@ -100,8 +125,6 @@ displayMovements(account1.movements);
 //   ['EUR', 'Euro'],
 //   ['GBP', 'Pound sterling'],
 // ]);
-
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -159,11 +182,11 @@ displayMovements(account1.movements);
 // console.log('-----------------METHOD FOREACH-------------------');
 
 // movements.forEach(function (movement, i, arr) {
-//   console.log(
-//     `Movement ${i + 1} : You ${movement > 0 ? 'deposited' : 'withdrew'} ${
-//       movement > 0 ? movement : Math.abs(movement)
-//     }`
-//   );
+// console.log(
+//   `Movement ${i + 1} : You ${movement > 0 ? 'deposited' : 'withdrew'} ${
+//     movement > 0 ? movement : Math.abs(movement)
+//   }`
+// );
 // });
 
 // const currencies = new Map([
@@ -183,43 +206,43 @@ displayMovements(account1.movements);
 //   console.log(`${value} ${value}`);
 // });
 
-// TEST DATA 1
-let juliaDatas = [3, 5, 2, 12, 7];
-let kateDatas = [4, 1, 15, 8, 3];
-const copyArray = function(arr){
-  const arrCopy = [...arr];
-  return arrCopy  
-};
-const suppressFirstAndLastTwo = function(arr){
-  const arrCorrected = arr.slice(1, -2);
-  return arrCorrected
-};
+// // TEST DATA 1
+// let juliaDatas = [3, 5, 2, 12, 7];
+// let kateDatas = [4, 1, 15, 8, 3];
+// const copyArray = function(arr){
+//   const arrCopy = [...arr];
+//   return arrCopy
+// };
+// const suppressFirstAndLastTwo = function(arr){
+//   const arrCorrected = arr.slice(1, -2);
+//   return arrCorrected
+// };
 
-const kateDatas2 = copyArray(kateDatas);
-const juliaDatasCorrected = suppressFirstAndLastTwo(juliaDatas);
+// const kateDatas2 = copyArray(kateDatas);
+// const juliaDatasCorrected = suppressFirstAndLastTwo(juliaDatas);
 
-console.log('TEST DATA 1');
-const checkDogs = function (dogs) {
-  for (const [i, dogAge] of dogs.entries()) {
-    console.log(
-      `Dog number ${i + 1} is ${
-        dogAge > 1 ? 'an adult ' : 'still a puppy '
-      } and he is ${dogAge} years old`
-    );
-  }
-};
-console.log('checkDogs(juliaDatasCorrected) :');
-checkDogs(juliaDatasCorrected);
-console.log('checkDogs(kateDatas2) :');
-checkDogs(kateDatas2);
+// console.log('TEST DATA 1');
+// const checkDogs = function (dogs) {
+//   for (const [i, dogAge] of dogs.entries()) {
+//     console.log(
+//       `Dog number ${i + 1} is ${
+//         dogAge > 1 ? 'an adult ' : 'still a puppy '
+//       } and he is ${dogAge} years old`
+//     );
+//   }
+// };
+// console.log('checkDogs(juliaDatasCorrected) :');
+// checkDogs(juliaDatasCorrected);
+// console.log('checkDogs(kateDatas2) :');
+// checkDogs(kateDatas2);
 
-// TEST DATA 2
-console.log('TEST DATA 2');
-juliaDatas = [9,16,6,8,3];
-kateDatas = [10,5,6,1,4];
-const kateDatas3 = copyArray(kateDatas);
-const juliaDatasCorrected2 = suppressFirstAndLastTwo(juliaDatas);
-console.log('checkDogs(juliaDatasCorrected2) :');
-checkDogs(juliaDatasCorrected2);
-console.log('checkDogs(kateDatas3) :');
-checkDogs(kateDatas3);
+// // TEST DATA 2
+// console.log('TEST DATA 2');
+// juliaDatas = [9,16,6,8,3];
+// kateDatas = [10,5,6,1,4];
+// const kateDatas3 = copyArray(kateDatas);
+// const juliaDatasCorrected2 = suppressFirstAndLastTwo(juliaDatas);
+// console.log('checkDogs(juliaDatasCorrected2) :');
+// checkDogs(juliaDatasCorrected2);
+// console.log('checkDogs(kateDatas3) :');
+// checkDogs(kateDatas3);
