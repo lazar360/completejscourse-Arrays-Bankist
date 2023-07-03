@@ -65,7 +65,7 @@ const displayMovements = function (movements) {
   movements.forEach(function (mov, i) {
     const html = `
       <div class="movements__row">
-          <div class="movements__type movements__type--deposit">${i}</div>
+          <div class="movements__type movements__type--deposit">${i + 1}</div>
           <div class="movements__value">${mov}</div>
         </div>
       `;
