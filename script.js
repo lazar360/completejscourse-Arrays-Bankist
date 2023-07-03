@@ -97,13 +97,12 @@ for (const mov of movements) {
 }
 console.log(movementsUSDfor);
 
-movements.map((mov, i, arr) => {
-  console.log(
-    `Movement ${i + 1} : You ${mov > 0 ? 'deposited' : 'withdrew'} ${
-      mov > 0 ? mov : Math.abs(mov)
-    }`
-  );
+const movementsDescriptions = movements.map((mov, i) => {
+  return `Movement ${i + 1} : You ${mov > 0 ? 'deposited' : 'withdrew'} ${
+    mov > 0 ? mov : Math.abs(mov)
+  }`;
 });
+console.log(movementsDescriptions);
 
 // const displayMovements2 = function (movements) {
 //   for(const[i, mov] of movements.entries()) {
