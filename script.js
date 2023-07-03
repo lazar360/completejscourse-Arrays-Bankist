@@ -99,11 +99,24 @@ console.log('movements', movements);
 console.log('deposit', deposits);
 console.log('withdrawal', withdrawal);
 
-const balance = movements.reduce(function (acc, cur, i, arr) {
-  return acc + cur;
-}, 0);
-
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   return acc + cur;
+// }, 0);
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
 console.log(balance);
+const maxValue = movements.reduce((acc, cur) => Math.max(acc, cur), 0);
+console.log('maxValue', maxValue);
+let balance2 = 0;
+for (const mov of movements) {
+  balance2 += mov;
+}
+console.log(balance2);
+
+const calcDisplayBalance = function(movements){
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
 
 ////////////////////////////////
 // LECTURES
