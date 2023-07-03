@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -104,15 +104,23 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // JOIN
 // console.log(letters.join(' - '));
 
-const arr = [23, 11, 64];
-console.log(arr[0]);
-console.log(arr.at(0));
+// const arr = [23, 11, 64];
+// console.log(arr[0]);
+// console.log(arr.at(0));
 
 // getting the last array element
-console.log(arr[arr.length - 1]);
-console.log(arr.slice(-1)[0]);
-console.log(arr.at(-1));
+// console.log(arr[arr.length - 1]);
+// console.log(arr.slice(-1)[0]);
+// console.log(arr.at(-1));
 
-console.log('jonas'.at(0));
-console.log('jonas'.at(-1));
+// console.log('jonas'.at(0));
+// console.log('jonas'.at(-1));
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+for(const movement of movements){
+  console.log(`You ${movement>0 ? 'deposited' : 'withdrew'} ${movement>0 ? movement : Math.abs(movement)}`);
+}
+console.log('-----------------METHOD FOREACH-------------------');
+movements.forEach(function(movement){
+  console.log(`You ${movement>0 ? 'deposited' : 'withdrew'} ${movement>0 ? movement : Math.abs(movement)}`);
+})
