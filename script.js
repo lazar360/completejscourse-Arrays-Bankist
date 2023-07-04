@@ -105,7 +105,10 @@ console.log('withdrawal', withdrawal);
 const balance = movements.reduce((acc, cur) => acc + cur, 0);
 console.log(balance);
 // const maxValue = movements.reduce((acc, cur) => Math.max(acc, cur), movements[0]);
-const maxValue = movements.reduce((acc, cur) => acc > cur ? acc : cur, movements[0]);
+const maxValue = movements.reduce(
+  (acc, cur) => (acc > cur ? acc : cur),
+  movements[0]
+);
 console.log('maxValue', maxValue);
 let balance2 = 0;
 for (const mov of movements) {
@@ -113,7 +116,7 @@ for (const mov of movements) {
 }
 console.log(balance2);
 
-const calcDisplayBalance = function(movements){
+const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, cur) => acc + cur, 0);
   labelBalance.textContent = `${balance} EUR`;
 };
@@ -286,3 +289,28 @@ calcDisplayBalance(account1.movements);
 // checkDogs(juliaDatasCorrected2);
 // console.log('checkDogs(kateDatas3) :');
 // checkDogs(kateDatas3);
+
+// TEST DATA 1
+let data1 = [5, 2, 4, 1, 15, 8, 3];
+// TEST DATA 2
+let data2 = [16, 6, 10, 5, 6, 1, 4];
+
+// 1 map
+const calcHumanAge = data =>
+  data.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4));
+const humanAge1 = calcHumanAge(data1);
+const humanAge2 = calcHumanAge(data2);
+console.log(humanAge1);
+console.log(humanAge2);
+
+// 2 filter
+const filterHumanAge = data => data.filter(humanAge => humanAge >= 18);
+const humanAge1filtered = filterHumanAge(humanAge1);
+const humanAge2filtered = filterHumanAge(humanAge2);
+console.log(humanAge1filtered);
+console.log(humanAge2filtered);
+
+// 3 reduce
+const calcAverage = data => data.reduce((acc, age) => acc + age)/data.length;
+console.log(calcAverage(humanAge1filtered));  
+console.log(calcAverage(humanAge2filtered));  
