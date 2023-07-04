@@ -61,6 +61,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
@@ -71,7 +73,7 @@ const displayMovements = function (movements) {
             ${i + 1} ${type}
           </div>
           <div class="movements__value">
-          ${mov}
+          ${mov} €
           </div>
           </div>
           `;
@@ -79,6 +81,19 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+    labelSumIn.textContent = `${incomes} €`
+
+  const outputs = movements
+  .filter(mov => mov < 0)
+  .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${outputs} €`
+  };
+calcDisplaySummary(account1.movements);
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -90,8 +105,6 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
-// console.log(accounts);
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const deposits = movements.filter(mov => mov > 0);
 const withdrawal = movements.filter(mov => mov < 0);
@@ -99,22 +112,13 @@ console.log('movements', movements);
 console.log('deposit', deposits);
 console.log('withdrawal', withdrawal);
 
-// const balance = movements.reduce(function (acc, cur, i, arr) {
-//   return acc + cur;
-// }, 0);
 const balance = movements.reduce((acc, cur) => acc + cur, 0);
 console.log(balance);
-// const maxValue = movements.reduce((acc, cur) => Math.max(acc, cur), movements[0]);
 const maxValue = movements.reduce(
   (acc, cur) => (acc > cur ? acc : cur),
   movements[0]
 );
 console.log('maxValue', maxValue);
-let balance2 = 0;
-for (const mov of movements) {
-  balance2 += mov;
-}
-console.log(balance2);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, cur) => acc + cur, 0);
@@ -158,10 +162,6 @@ calcDisplayBalance(account1.movements);
 //       `;
 //   };
 // };
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
 
 // const currencies = new Map([
 //   ['USD', 'United States dollar'],
@@ -291,27 +291,27 @@ calcDisplayBalance(account1.movements);
 // checkDogs(kateDatas3);
 
 // TEST DATA 1
-let data1 = [5, 2, 4, 1, 15, 8, 3];
+// let data1 = [5, 2, 4, 1, 15, 8, 3];
 // TEST DATA 2
-let data2 = [16, 6, 10, 5, 6, 1, 4];
+// let data2 = [16, 6, 10, 5, 6, 1, 4];
 
 // 1 map
-const calcHumanAge = data =>
-  data.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4));
+// const calcHumanAge = data =>
+//   data.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4));
 // const humanAge1 = calcHumanAge(data1);
 // const humanAge2 = calcHumanAge(data2);
 // console.log(humanAge1);
 // console.log(humanAge2);
 
 // 2 filter
-const filterHumanAge = data => data.filter(humanAge => humanAge >= 18);
+// const filterHumanAge = data => data.filter(humanAge => humanAge >= 18);
 // const humanAge1filtered = filterHumanAge(humanAge1);
 // const humanAge2filtered = filterHumanAge(humanAge2);
 // console.log(humanAge1filtered);
 // console.log(humanAge2filtered);
 
 // 3 reduce
-const calcAverage = data => data.reduce((acc, age) => acc + age) / data.length;
+// const calcAverage = data => data.reduce((acc, age) => acc + age) / data.length;
 // console.log(calcAverage(humanAge1filtered));
 // console.log(calcAverage(humanAge2filtered));
 
@@ -328,10 +328,18 @@ const calcAverage = data => data.reduce((acc, age) => acc + age) / data.length;
 //   return average
 // };
 
-const calcAverageHumanAge = data =>
-  data.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
-      .filter(humanAge => humanAge >= 18)
-      .reduce((acc, age, i, arr) => acc + age / arr.length,0);
+// const calcAverageHumanAge = data =>
+//   data.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
+//       .filter(humanAge => humanAge >= 18)
+//       .reduce((acc, age, i, arr) => acc + age / arr.length,0);
 
-console.log(calcAverageHumanAge(data1));
-console.log(calcAverageHumanAge(data2));
+// console.log(calcAverageHumanAge(data1));
+// console.log(calcAverageHumanAge(data2));
+
+// const eurToUsd = 1.1;
+// const totalDepositsUSD = movements
+//   .filter(mov => mov > 0)
+//   // debug .map((mov, i, arr) => {console.log(arr); return mov * eurToUsd});
+//   .map(mov => mov * eurToUsd)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(totalDepositsUSD);
