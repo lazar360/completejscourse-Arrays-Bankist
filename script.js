@@ -315,15 +315,23 @@ const calcAverage = data => data.reduce((acc, age) => acc + age) / data.length;
 // console.log(calcAverage(humanAge1filtered));
 // console.log(calcAverage(humanAge2filtered));
 
-const calcAverageHumanAge = function (dogAges) {
-  const humanAges = dogAges.map(dogAge =>
-    dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4
-  );
-  const humanAgesFiltered = humanAges.filter(humanAge => humanAge >= 18);
-  return (
-    humanAgesFiltered.reduce((acc, age) => acc + age) / humanAgesFiltered.length
-  );
-};
+// const calcAverageHumanAge = function (dogAges) {
+//   const humanAges = dogAges.map(dogAge =>
+//     dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4
+//   );
+//   const humanAgesFiltered = humanAges.filter(humanAge => humanAge >= 18);
+
+//   const average =  humanAgesFiltered.reduce(
+//       (acc, age, i, arr) => acc + age / arr.length,0
+//   );
+
+//   return average
+// };
+
+const calcAverageHumanAge = data =>
+  data.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
+      .filter(humanAge => humanAge >= 18)
+      .reduce((acc, age, i, arr) => acc + age / arr.length,0);
 
 console.log(calcAverageHumanAge(data1));
 console.log(calcAverageHumanAge(data2));
