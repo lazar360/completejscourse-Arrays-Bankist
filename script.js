@@ -298,19 +298,32 @@ let data2 = [16, 6, 10, 5, 6, 1, 4];
 // 1 map
 const calcHumanAge = data =>
   data.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4));
-const humanAge1 = calcHumanAge(data1);
-const humanAge2 = calcHumanAge(data2);
-console.log(humanAge1);
-console.log(humanAge2);
+// const humanAge1 = calcHumanAge(data1);
+// const humanAge2 = calcHumanAge(data2);
+// console.log(humanAge1);
+// console.log(humanAge2);
 
 // 2 filter
 const filterHumanAge = data => data.filter(humanAge => humanAge >= 18);
-const humanAge1filtered = filterHumanAge(humanAge1);
-const humanAge2filtered = filterHumanAge(humanAge2);
-console.log(humanAge1filtered);
-console.log(humanAge2filtered);
+// const humanAge1filtered = filterHumanAge(humanAge1);
+// const humanAge2filtered = filterHumanAge(humanAge2);
+// console.log(humanAge1filtered);
+// console.log(humanAge2filtered);
 
 // 3 reduce
-const calcAverage = data => data.reduce((acc, age) => acc + age)/data.length;
-console.log(calcAverage(humanAge1filtered));  
-console.log(calcAverage(humanAge2filtered));  
+const calcAverage = data => data.reduce((acc, age) => acc + age) / data.length;
+// console.log(calcAverage(humanAge1filtered));
+// console.log(calcAverage(humanAge2filtered));
+
+const calcAverageHumanAge = function (dogAges) {
+  const humanAges = dogAges.map(dogAge =>
+    dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4
+  );
+  const humanAgesFiltered = humanAges.filter(humanAge => humanAge >= 18);
+  return (
+    humanAgesFiltered.reduce((acc, age) => acc + age) / humanAgesFiltered.length
+  );
+};
+
+console.log(calcAverageHumanAge(data1));
+console.log(calcAverageHumanAge(data2));
