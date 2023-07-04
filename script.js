@@ -350,3 +350,15 @@ calcDisplayBalance(account1.movements);
 //   .map(mov => mov * eurToUsd)
 //   .reduce((acc, mov) => acc + mov, 0);
 // console.log(totalDepositsUSD);
+
+// const firstWithdrawal = movements.find(move => move < 0);
+// console.log(firstWithdrawal);
+// console.log(accounts);
+// console.log(accounts.find(account => account.owner === 'Jessica Davis'));
+// let account;
+// for (let acc of accounts) {
+//   if (acc.owner === 'Jessica Davis') {
+//     account = acc;
+//   }
+// }
+// console.log(account);
