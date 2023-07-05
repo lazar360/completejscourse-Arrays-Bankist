@@ -133,16 +133,20 @@ const calcDisplayBalance = function (movements) {
 // Event handler
 let currentAccount;
 
-btnLogin.addEventListener('click',function (e) {
+btnLogin.addEventListener('click', function (e) {
   // prevent form from submitting
   e.preventDefault();
 
-  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
   console.log(currentAccount);
 
-  if(currentAccount?.pin === Number(inputLoginPin.value)){
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and welcome message
-    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
     containerApp.style.opacity = 100;
 
     // Clear fields
@@ -159,6 +163,13 @@ btnLogin.addEventListener('click',function (e) {
     // Display summary
     calcDisplaySummary(currentAccount);
   }
+});
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  console.log(amount, receiverAcc);
 });
 
 ////////////////////////////////
