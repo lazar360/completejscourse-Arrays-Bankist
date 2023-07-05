@@ -166,7 +166,7 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = '';
     inputLoginPin.blur();
 
-    // updateUI 
+    // updateUI
     updateUI(currentAccount);
   }
 });
@@ -177,7 +177,7 @@ btnTransfer.addEventListener('click', function (e) {
   const receiverAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
-  console.log(amount, receiverAcc);
+  inputTransferAmount.value = inputTransferTo = '';
 
   if (
     amount > 0 &&
