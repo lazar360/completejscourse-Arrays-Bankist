@@ -436,3 +436,4 @@ btnClose.addEventListener('click', function (e) {
 
 console.log('movements', movements);
 console.log('movements includes -130 : ', movements.includes(-130));
+console.log('movements.some(mov => mov > 0) : ', movements.some(mov => mov > 0));
