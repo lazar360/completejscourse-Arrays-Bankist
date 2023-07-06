@@ -124,17 +124,13 @@ const updateUI = function (acc) {
 
 const deposits = movements.filter(mov => mov > 0);
 const withdrawal = movements.filter(mov => mov < 0);
-console.log('movements', movements);
-console.log('deposit', deposits);
-console.log('withdrawal', withdrawal);
 
 const balance = movements.reduce((acc, cur) => acc + cur, 0);
-console.log(balance);
-const maxValue = movements.reduce(
-  (acc, cur) => (acc > cur ? acc : cur),
-  movements[0]
-);
-console.log('maxValue', maxValue);
+// const maxValue = movements.reduce(
+//   (acc, cur) => (acc > cur ? acc : cur),
+//   movements[0]
+// );
+// console.log('maxValue', maxValue);
 
 const calcDisplayBalance = function (acc) {
   const balance = acc.movements.reduce((acc, cur) => acc + cur, 0);
@@ -152,7 +148,6 @@ btnLogin.addEventListener('click', function (e) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and welcome message
@@ -438,3 +433,6 @@ btnClose.addEventListener('click', function (e) {
 //   }
 // }
 // console.log(account);
+
+console.log('movements', movements);
+console.log('movements includes -130 : ', movements.includes(-130));
