@@ -206,6 +206,7 @@ btnClose.addEventListener('click', function (e) {
     accounts.splice(index, 1);
     containerApp.style.opacity = 0;
   }
+  inputLoginPin.value = inputLoginUsername.value = '';
 });
 
 ////////////////////////////////
