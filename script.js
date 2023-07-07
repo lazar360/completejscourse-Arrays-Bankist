@@ -472,7 +472,7 @@ btnSort.addEventListener('click', function (e) {
 // console.log(
 //   'movements.every(mov => mov > 0) : ',
 //   movements.every(mov => mov > 0)
-// );
+// );s
 
 // // Separate callback
 // const deposit = mov => mov > 0;
@@ -498,32 +498,41 @@ btnSort.addEventListener('click', function (e) {
 //   .reduce((acc, mov) => acc + mov, 0);
 // console.log('overallBalance2', overallBalance2);
 
-// Strings
-const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
-console.log(owners.sort());
-console.log(owners);
+// // Strings
+// const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+// console.log(owners.sort());
+// console.log(owners);
 
-// Numbers
-console.log(movements);
+// // Numbers
+// console.log(movements);
 
-// return < 0, A, B
-// return > 0, B, A
+// // return < 0, A, B
+// // return > 0, B, A
 
-// Ascending
+// // Ascending
 
-// movements.sort((a, b) => {
-//   if (a > b) return 1;
-//   if (a < b) return -1;
-// });
+// // movements.sort((a, b) => {
+// //   if (a > b) return 1;
+// //   if (a < b) return -1;
+// // });
 
-movements.sort((a, b) => a - b);
-console.log(movements);
+// movements.sort((a, b) => a - b);
+// console.log(movements);
 
-// Descending
-// movements.sort((a, b) => {
-//   if (a > b) return -1;
-//   if (a < b) return 1;
-// });
+// // Descending
+// // movements.sort((a, b) => {
+// //   if (a > b) return -1;
+// //   if (a < b) return 1;
+// // });
 
-movements.sort((a, b) => b - a);
-console.log(movements);
+// movements.sort((a, b) => b - a);
+// console.log(movements);
+const arr = [1, 2, 3, 4, 5, 6];
+const x = new Array(7);
+console.log(x.fill(1, 3, 5));
+console.log(arr.fill(1, 3, 5));
+console.log(Array.from({length:7}, () => 1));
+console.log(Array.from({length:7}, (cur, i) => cur = i + 1));
+console.log(Math.trunc(Math.random()*6)+1);
+// Générer un tableau de 100 lancés aléatoires de dé (6 faces)
+console.log(Array.from({length:100}, () => Math.trunc(Math.random()*6)+1));
