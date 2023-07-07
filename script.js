@@ -475,7 +475,8 @@ console.log(arr.flat());
 const arrDeep = [[[1, 2], 3, 4], [5, 6, 7], 8, 9];
 console.log(arrDeep.flat(2));
 
-const allMovements = accounts.map(acc => acc.movements).flat();
-console.log('allMovements', allMovements);
-const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+const overallBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
 console.log('overallBalance', overallBalance);
