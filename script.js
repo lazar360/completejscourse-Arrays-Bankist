@@ -525,14 +525,24 @@ btnSort.addEventListener('click', function (e) {
 // //   if (a < b) return 1;
 // // });
 
-// movements.sort((a, b) => b - a);
-// console.log(movements);
-const arr = [1, 2, 3, 4, 5, 6];
-const x = new Array(7);
-console.log(x.fill(1, 3, 5));
-console.log(arr.fill(1, 3, 5));
-console.log(Array.from({length:7}, () => 1));
-console.log(Array.from({length:7}, (cur, i) => cur = i + 1));
-console.log(Math.trunc(Math.random()*6)+1);
-// Générer un tableau de 100 lancés aléatoires de dé (6 faces)
-console.log(Array.from({length:100}, () => Math.trunc(Math.random()*6)+1));
+// // movements.sort((a, b) => b - a);
+// // console.log(movements);
+// const arr = [1, 2, 3, 4, 5, 6];
+// const x = new Array(7);
+// console.log(x.fill(1, 3, 5));
+// console.log(arr.fill(1, 3, 5));
+// console.log(Array.from({ length: 7 }, () => 1));
+// console.log(Array.from({ length: 7 }, (cur, i) => (cur = i + 1)));
+// console.log(Math.trunc(Math.random() * 6) + 1);
+// // Générer un tableau de 100 lancés aléatoires de dé (6 faces)
+// console.log(
+//   Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6) + 1)
+// );
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+});
