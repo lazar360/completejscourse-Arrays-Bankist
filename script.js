@@ -189,6 +189,19 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // add movement
+    currentAccount.movements.push(amount);
+    // update
+    updateUI(currentAccount);
+    // clear field
+    inputLoanAmount.value = '';
+  }
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   if (
@@ -435,5 +448,12 @@ btnClose.addEventListener('click', function (e) {
 // console.log(account);
 
 console.log('movements', movements);
+
+// EQUALITY
 console.log('movements includes -130 : ', movements.includes(-130));
-console.log('movements.some(mov => mov > 0) : ', movements.some(mov => mov > 0));
+
+// CONDITION
+console.log(
+  'movements.some(mov => mov > 0) : ',
+  movements.some(mov => mov > 0)
+);
