@@ -447,25 +447,35 @@ btnClose.addEventListener('click', function (e) {
 // }
 // console.log(account);
 
-console.log('movements', movements);
+// console.log('movements', movements);
 
-// EQUALITY
-console.log('movements includes -130 : ', movements.includes(-130));
+// // EQUALITY
+// console.log('movements includes -130 : ', movements.includes(-130));
 
-// SOME CONDITION
-console.log(
-  'movements.some(mov => mov > 0) : ',
-  movements.some(mov => mov > 0)
-);
+// // SOME CONDITION
+// console.log(
+//   'movements.some(mov => mov > 0) : ',
+//   movements.some(mov => mov > 0)
+// );
 
-// EVERY CONDITION
-console.log(
-  'movements.every(mov => mov > 0) : ',
-  movements.every(mov => mov > 0)
-);
+// // EVERY CONDITION
+// console.log(
+//   'movements.every(mov => mov > 0) : ',
+//   movements.every(mov => mov > 0)
+// );
 
-// Separate callback
-const deposit = mov => mov > 0;
-console.log(movements.some(deposit));
-console.log(movements.every(deposit));
-console.log(movements.filter(deposit));
+// // Separate callback
+// const deposit = mov => mov > 0;
+// console.log(movements.some(deposit));
+// console.log(movements.every(deposit));
+// console.log(movements.filter(deposit));
+
+const arr = [[1, 2, 3, 4], [5, 6, 7], 8, 9];
+console.log(arr.flat());
+const arrDeep = [[[1, 2], 3, 4], [5, 6, 7], 8, 9];
+console.log(arrDeep.flat(2));
+
+const allMovements = accounts.map(acc => acc.movements).flat();
+console.log('allMovements', allMovements);
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log('overallBalance', overallBalance);
