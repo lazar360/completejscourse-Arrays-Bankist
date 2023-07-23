@@ -283,4 +283,3 @@ labelBalance.addEventListener('click', function () {
 // LECTURES
 
 
-
