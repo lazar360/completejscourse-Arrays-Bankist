@@ -254,7 +254,7 @@ btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   if (
     inputCloseUsername.value === currentAccount.username &&
-    Number(inputClosePin.value) === currentAccount.pin
+    +inputClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
       acc => acc.username === currentAccount.username
@@ -275,11 +275,19 @@ btnSort.addEventListener('click', function (e) {
 labelBalance.addEventListener('click', function () {
   const movementsUI = Array.from(
     document.querySelectorAll('.movements__value'),
-    el => Number(el.textContent.replace('€', ''))
+    el => +(el.textContent.replace('€', ''))
   );
   console.log(movementsUI);
 });
 
 // LECTURES
+// conversion 
+console.log(Number('42'));
+console.log('42');
+
+// parse
+console.log(Number.parseInt('18px'));
+console.log(Number.parseInt('px3')); // marche pas
+
 
 
