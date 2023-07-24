@@ -288,6 +288,7 @@ console.log('42');
 // parse
 console.log(Number.parseInt('18px'));
 console.log(Number.parseInt('px3')); // marche pas
-
-
-
+console.log(Number.parseFloat('3.6px'));
+console.log(Number.isNaN('42px'));
+console.log(Number.isNaN(42));
+console.log(Number.isNaN(+'42px'));
