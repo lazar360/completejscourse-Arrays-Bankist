@@ -289,6 +289,15 @@ console.log('42');
 console.log(Number.parseInt('18px'));
 console.log(Number.parseInt('px3')); // marche pas
 console.log(Number.parseFloat('3.6px'));
+
+// isNan
 console.log(Number.isNaN('42px'));
 console.log(Number.isNaN(42));
 console.log(Number.isNaN(+'42px'));
+
+// isFinite best method to check if it's a number
+
+console.log(Number.isFinite(4));
+console.log(Number.isFinite('42'));
+console.log(Number.isFinite(+'42px'));
+console.log(Number.isFinite(4/0));
