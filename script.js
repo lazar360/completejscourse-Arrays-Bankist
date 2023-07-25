@@ -301,3 +301,9 @@ console.log(Number.isFinite(4));
 console.log(Number.isFinite('42'));
 console.log(Number.isFinite(+'42px'));
 console.log(Number.isFinite(4/0));
+
+// Math
+console.log(Math.max(1,23, 42, '56'));
+console.log(Math.min(1,23, 42, '56'));
+console.log(Math.sqrt(25));
+console.log(Math.PI * Number.parseFloat(10)**2);
