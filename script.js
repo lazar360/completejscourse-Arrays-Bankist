@@ -310,3 +310,14 @@ console.log(Math.PI * Number.parseFloat(10)**2);
 console.log(Math.trunc(Math.random()*6+1));
 const randInt = (min, max) => Math.trunc(Math.random()*(max - min) +1) + min;
 console.log(randInt(7,12));
+
+// Integer
+console.log(Math.round(24.9));
+console.log(Math.ceil(24.9));
+console.log('flour 24,9 :', Math.floor(24.9));
+console.log('flour -24,9 :', Math.floor(-24.9));
+
+// float
+console.log((2.47).toFixed(0));
+console.log((2.47).toFixed(1));
+console.log((2.47).toFixed(2));
