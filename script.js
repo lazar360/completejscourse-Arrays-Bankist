@@ -321,17 +321,24 @@ labelBalance.addEventListener('click', function () {
 // console.log(+(2.345).toFixed(2));
 // console.log(typeof +(2.345).toFixed(2));
 
-console.log(`Remainder operator  : 
-5 % 2 = ${5 % 2}
-5/2 = ${5 / 2}
-8 % 3 = ${8 % 3}
-8 / 3 = ${8 / 3}
-6 % 2 = ${6 % 2}
-`);
+// console.log(`Remainder operator  : 
+// 5 % 2 = ${5 % 2}
+// 5/2 = ${5 / 2}
+// 8 % 3 = ${8 % 3}
+// 8 / 3 = ${8 / 3}
+// 6 % 2 = ${6 % 2}
+// `);
 
-const isEven = n => n % 2 === 0;
-console.log(` isEven :
-8 : ${isEven(8) ? 'pair' : ' impair'}
-23 : ${isEven(23)? 'pair' : ' impair'}
-514 : ${isEven(514) ? 'pair' : ' impair'}
-`);
+// const isEven = n => n % 2 === 0;
+// console.log(` isEven :
+// 8 : ${isEven(8) ? 'pair' : ' impair'}
+// 23 : ${isEven(23) ? 'pair' : ' impair'}
+// 514 : ${isEven(514) ? 'pair' : ' impair'}
+// `);
+
+labelBalance.addEventListener('click', function () {
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+    else row.style.backgroundColor = 'blue';
+  });
+});
