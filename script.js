@@ -121,7 +121,7 @@ const displayMovements = function (movements, sort = false) {
             ${i + 1} ${type}
           </div>
           <div class="movements__value">
-          ${mov} €
+          ${mov.toFixed(2)} €
           </div>
           </div>
           `;
@@ -145,7 +145,7 @@ const calcDisplaySummary = function (acc) {
     .map(deposit => (deposit * acc.interestRate) / 100)
     .filter(interest => interest >= 1)
     .reduce((acc, deposit) => acc + deposit, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const createUsernames = function (accs) {
@@ -174,16 +174,11 @@ const deposits = movements.filter(mov => mov > 0);
 const withdrawal = movements.filter(mov => mov < 0);
 
 const balance = movements.reduce((acc, cur) => acc + cur, 0);
-// const maxValue = movements.reduce(
-//   (acc, cur) => (acc > cur ? acc : cur),
-//   movements[0]
-// );
-// console.log('maxValue', maxValue);
 
 const calcDisplayBalance = function (acc) {
   const balance = acc.movements.reduce((acc, cur) => acc + cur, 0);
   acc.balance = balance;
-  labelBalance.textContent = `${acc.balance} EUR`;
+  labelBalance.textContent = `${acc.balance.toFixed(2)} EUR`;
 };
 
 // Event handler
@@ -239,7 +234,7 @@ btnTransfer.addEventListener('click', function (e) {
 
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.floor(inputLoanAmount.value);
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // add movement
     currentAccount.movements.push(amount);
@@ -325,5 +320,3 @@ console.log((2.345).toFixed(2));
 console.log(typeof (2.345).toFixed(2));
 console.log(+(2.345).toFixed(2));
 console.log(typeof +(2.345).toFixed(2));
-
-
