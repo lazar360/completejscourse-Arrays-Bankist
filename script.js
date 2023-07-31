@@ -108,18 +108,27 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  const movs = sort ? acc.movements.slice().sort((a, b) => a - b) : acc.movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const date = new Date(acc.movementsDates[i]);
+    const day = `${date.getDate()}`.padStart(2, 0);
+    const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    const year = date.getFullYear();
+    const displayDate = `${day}/${month}/${year}`;
+
     const html = `
       <div class="movements__row">
           <div class="movements__type movements__type--${type}">
             ${i + 1} ${type}
           </div>
+          <div class="movements__date">${displayDate}</div>
+
           <div class="movements__value">
           ${mov.toFixed(2)} €
           </div>
@@ -161,7 +170,7 @@ createUsernames(accounts);
 
 const updateUI = function (acc) {
   // Display movements
-  displayMovements(acc.movements);
+  displayMovements(acc);
 
   // Display balance
   calcDisplayBalance(acc);
@@ -183,6 +192,22 @@ const calcDisplayBalance = function (acc) {
 
 // Event handler
 let currentAccount;
+
+// FAKE ALWAYS LOGGED IN
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() + 1}`.padStart(2, 0);
+const year = now.getFullYear();
+const hour = now.getHours();
+const min = now.getMinutes();
+labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+
+// day/month/year
+
 
 btnLogin.addEventListener('click', function (e) {
   // prevent form from submitting
@@ -357,3 +382,37 @@ labelBalance.addEventListener('click', function () {
 // console.log(PI);
 
 //console.log(Number('230_000'));
+
+////////////////////////////////
+// DATES AND TIME
+////////////////////////////////
+
+// // Create a date
+
+// const now = new Date();
+// console.log(now);
+
+// console.log(new Date('Mon Jul 31 2023 14:11:38'));
+// console.log(new Date('December 24, 2015'));
+// console.log(new Date(account1.movementsDates[0]));
+
+// console.log(new Date(2037, 10, 19, 15, 23, 5));
+// console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+// // Working with dates
+
+// const future = new Date(2037, 10, 19, 15, 23, 5);
+// console.log(future);
+// console.log(future.getFullYear());
+// console.log(future.getMonth());
+// console.log(future.getDate());
+// console.log(future.getHours());
+// console.log(future.getMinutes());
+// console.log(future.getSeconds());
+// console.log(future.toISOString());
+
+// console.log(future.getTime());
+// console.log(new Date(2142253385000));
+
+// future.setFullYear(2040);
+// console.log(future);
