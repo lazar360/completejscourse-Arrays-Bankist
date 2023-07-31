@@ -275,13 +275,13 @@ btnSort.addEventListener('click', function (e) {
 labelBalance.addEventListener('click', function () {
   const movementsUI = Array.from(
     document.querySelectorAll('.movements__value'),
-    el => +(el.textContent.replace('€', ''))
+    el => +el.textContent.replace('€', '')
   );
   console.log(movementsUI);
 });
 
 // LECTURES
-// conversion 
+// conversion
 console.log(Number('42'));
 console.log('42');
 
@@ -300,16 +300,16 @@ console.log(Number.isNaN(+'42px'));
 console.log(Number.isFinite(4));
 console.log(Number.isFinite('42'));
 console.log(Number.isFinite(+'42px'));
-console.log(Number.isFinite(4/0));
+console.log(Number.isFinite(4 / 0));
 
 // Math
-console.log(Math.max(1,23, 42, '56'));
-console.log(Math.min(1,23, 42, '56'));
+console.log(Math.max(1, 23, 42, '56'));
+console.log(Math.min(1, 23, 42, '56'));
 console.log(Math.sqrt(25));
-console.log(Math.PI * Number.parseFloat(10)**2);
-console.log(Math.trunc(Math.random()*6+1));
-const randInt = (min, max) => Math.trunc(Math.random()*(max - min) +1) + min;
-console.log(randInt(7,12));
+console.log(Math.PI * Number.parseFloat(10) ** 2);
+console.log(Math.trunc(Math.random() * 6 + 1));
+const randInt = (min, max) => Math.trunc(Math.random() * (max - min) + 1) + min;
+console.log(randInt(7, 12));
 
 // Integer
 console.log(Math.round(24.9));
@@ -317,7 +317,11 @@ console.log(Math.ceil(24.9));
 console.log('flour 24,9 :', Math.floor(24.9));
 console.log('flour -24,9 :', Math.floor(-24.9));
 
-// float
-console.log((2.47).toFixed(0));
-console.log((2.47).toFixed(1));
-console.log((2.47).toFixed(2));
+// rounding decimals
+console.log(`Rounding decimals :`);
+console.log((2.7).toFixed(0));
+console.log((2.7).toFixed(3));
+console.log((2.345).toFixed(2));
+console.log(typeof (2.345).toFixed(2));
+console.log(+(2.345).toFixed(2));
+console.log(typeof +(2.345).toFixed(2));
