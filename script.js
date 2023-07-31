@@ -321,7 +321,7 @@ labelBalance.addEventListener('click', function () {
 // console.log(+(2.345).toFixed(2));
 // console.log(typeof +(2.345).toFixed(2));
 
-// console.log(`Remainder operator  : 
+// console.log(`Remainder operator  :
 // 5 % 2 = ${5 % 2}
 // 5/2 = ${5 / 2}
 // 8 % 3 = ${8 % 3}
@@ -336,9 +336,24 @@ labelBalance.addEventListener('click', function () {
 // 514 : ${isEven(514) ? 'pair' : ' impair'}
 // `);
 
-labelBalance.addEventListener('click', function () {
-  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
-    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
-    else row.style.backgroundColor = 'blue';
-  });
-});
+// labelBalance.addEventListener('click', function () {
+//   [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+//     if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+//     else row.style.backgroundColor = 'blue';
+//   });
+// });
+
+// // 287,460,000,000
+// const diameter = 287_460_000_000;
+// console.log(diameter);
+
+// const priceCents = 345_99;
+// console.log(priceCents);
+
+// const trasferFee = 15_00;
+// const trasferFee2 = 1_500;
+
+// const PI = 3.14_15;
+// console.log(PI);
+
+//console.log(Number('230_000'));
