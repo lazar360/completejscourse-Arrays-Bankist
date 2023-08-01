@@ -320,14 +320,16 @@ btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Math.floor(inputLoanAmount.value);
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      // add movement
+      currentAccount.movements.push(amount);
 
-    // add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // update
-    updateUI(currentAccount);
+      // update
+      updateUI(currentAccount);
+    }, 2500);
     // clear field
     inputLoanAmount.value = '';
   }
@@ -364,129 +366,3 @@ labelBalance.addEventListener('click', function () {
 });
 
 // LECTURES
-// // conversion
-// console.log(Number('42'));
-// console.log('42');
-
-// // parse
-// console.log(Number.parseInt('18px'));
-// console.log(Number.parseInt('px3')); // marche pas
-// console.log(Number.parseFloat('3.6px'));
-
-// // isNan
-// console.log(Number.isNaN('42px'));
-// console.log(Number.isNaN(42));
-// console.log(Number.isNaN(+'42px'));
-
-// // isFinite best method to check if it's a number
-
-// console.log(Number.isFinite(4));
-// console.log(Number.isFinite('42'));
-// console.log(Number.isFinite(+'42px'));
-// console.log(Number.isFinite(4 / 0));
-
-// // Math
-// console.log(Math.max(1, 23, 42, '56'));
-// console.log(Math.min(1, 23, 42, '56'));
-// console.log(Math.sqrt(25));
-// console.log(Math.PI * Number.parseFloat(10) ** 2);
-// console.log(Math.trunc(Math.random() * 6 + 1));
-// const randInt = (min, max) => Math.trunc(Math.random() * (max - min) + 1) + min;
-// console.log(randInt(7, 12));
-
-// // Integer
-// console.log(Math.round(24.9));
-// console.log(Math.ceil(24.9));
-// console.log('flour 24,9 :', Math.floor(24.9));
-// console.log('flour -24,9 :', Math.floor(-24.9));
-
-// // rounding decimals
-// console.log(`Rounding decimals :`);
-// console.log((2.7).toFixed(0));
-// console.log((2.7).toFixed(3));
-// console.log((2.345).toFixed(2));
-// console.log(typeof (2.345).toFixed(2));
-// console.log(+(2.345).toFixed(2));
-// console.log(typeof +(2.345).toFixed(2));
-
-// console.log(`Remainder operator  :
-// 5 % 2 = ${5 % 2}
-// 5/2 = ${5 / 2}
-// 8 % 3 = ${8 % 3}
-// 8 / 3 = ${8 / 3}
-// 6 % 2 = ${6 % 2}
-// `);
-
-// const isEven = n => n % 2 === 0;
-// console.log(` isEven :
-// 8 : ${isEven(8) ? 'pair' : ' impair'}
-// 23 : ${isEven(23) ? 'pair' : ' impair'}
-// 514 : ${isEven(514) ? 'pair' : ' impair'}
-// `);
-
-// labelBalance.addEventListener('click', function () {
-//   [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
-//     if (i % 2 === 0) row.style.backgroundColor = 'orangered';
-//     else row.style.backgroundColor = 'blue';
-//   });
-// });
-
-// // 287,460,000,000
-// const diameter = 287_460_000_000;
-// console.log(diameter);
-
-// const priceCents = 345_99;
-// console.log(priceCents);
-
-// const trasferFee = 15_00;
-// const trasferFee2 = 1_500;
-
-// const PI = 3.14_15;
-// console.log(PI);
-
-//console.log(Number('230_000'));
-
-////////////////////////////////
-// DATES AND TIME
-////////////////////////////////
-
-// // Create a date
-
-// const now = new Date();
-// console.log(now);
-
-// console.log(new Date('Mon Jul 31 2023 14:11:38'));
-// console.log(new Date('December 24, 2015'));
-// console.log(new Date(account1.movementsDates[0]));
-
-// console.log(new Date(2037, 10, 19, 15, 23, 5));
-// console.log(new Date(3 * 24 * 60 * 60 * 1000));
-
-// // Working with dates
-
-// const future = new Date(2037, 10, 19, 15, 23, 5);
-// console.log(future);
-// console.log(future.getFullYear());
-// console.log(future.getMonth());
-// console.log(future.getDate());
-// console.log(future.getHours());
-// console.log(future.getMinutes());
-// console.log(future.getSeconds());
-// console.log(future.toISOString());
-
-// console.log(future.getTime());
-// console.log(new Date(2142253385000));
-
-// future.setFullYear(2040);
-// console.log(future);
-
-// const num = 3884764.23;
-
-// const optionsNum = {
-//   style: 'currency',
-//   unit: 'celsius',
-//   currency: 'EUR',
-// };
-// console.log(new Intl.NumberFormat('en-US').format(num));
-// console.log(new Intl.NumberFormat('fr-FR').format(num));
-// console.log(new Intl.NumberFormat(navigator.language, optionsNum).format(num));
