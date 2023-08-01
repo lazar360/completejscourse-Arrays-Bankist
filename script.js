@@ -170,19 +170,23 @@ const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes.toFixed(2)} €`;
+  labelSumIn.textContent = formatCur(incomes, acc.locale, acc.currency);
 
   const outputs = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${outputs.toFixed(2)} €`;
+  labelSumOut.textContent = formatCur(
+    Math.abs(outputs.toFixed(2)),
+    acc.locale,
+    acc.currency
+  );
 
   const interest = acc.movements
     .filter(mov => mov > 0)
     .map(deposit => (deposit * acc.interestRate) / 100)
     .filter(interest => interest >= 1)
     .reduce((acc, deposit) => acc + deposit, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = formatCur(interest, acc.locale, acc.currency);
 };
 
 const createUsernames = function (accs) {
@@ -476,13 +480,13 @@ labelBalance.addEventListener('click', function () {
 // future.setFullYear(2040);
 // console.log(future);
 
-const num = 3884764.23;
+// const num = 3884764.23;
 
-const optionsNum = {
-  style: 'currency',
-  unit: 'celsius',
-  currency: 'EUR',
-};
-console.log(new Intl.NumberFormat('en-US').format(num));
-console.log(new Intl.NumberFormat('fr-FR').format(num));
-console.log(new Intl.NumberFormat(navigator.language, optionsNum).format(num));
+// const optionsNum = {
+//   style: 'currency',
+//   unit: 'celsius',
+//   currency: 'EUR',
+// };
+// console.log(new Intl.NumberFormat('en-US').format(num));
+// console.log(new Intl.NumberFormat('fr-FR').format(num));
+// console.log(new Intl.NumberFormat(navigator.language, optionsNum).format(num));
