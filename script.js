@@ -215,6 +215,11 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
+// Experimenting with a API
+const now = new Date();
+labelDate.textContent = new Intl.DateTimeFormat('fr-FR').format(now);
+
+
 btnLogin.addEventListener('click', function (e) {
   // prevent form from submitting
   e.preventDefault();
