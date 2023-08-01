@@ -127,6 +127,14 @@ const formatMovementDate = function (date, locale) {
   // return `${day}/${month}/${year}`;
   return new Intl.DateTimeFormat(locale).format(date);
 };
+
+const formatCur = function (value, locale, currency) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+  }).format(value);
+};
+
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
@@ -140,6 +148,8 @@ const displayMovements = function (acc, sort = false) {
     const date = new Date(acc.movementsDates[i]);
     const displayDate = formatMovementDate(date, acc.locale);
 
+    const formattedMov = formatCur(mov, acc.locale, acc.currency);
+
     const html = `
       <div class="movements__row">
           <div class="movements__type movements__type--${type}">
@@ -148,7 +158,7 @@ const displayMovements = function (acc, sort = false) {
           <div class="movements__date">${displayDate}</div>
 
           <div class="movements__value">
-          ${mov.toFixed(2)} €
+          ${formattedMov} 
           </div>
           </div>
           `;
@@ -203,9 +213,8 @@ const withdrawal = movements.filter(mov => mov < 0);
 const balance = movements.reduce((acc, cur) => acc + cur, 0);
 
 const calcDisplayBalance = function (acc) {
-  const balance = acc.movements.reduce((acc, cur) => acc + cur, 0);
-  acc.balance = balance;
-  labelBalance.textContent = `${acc.balance.toFixed(2)} EUR`;
+  acc.balance = acc.movements.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency);
 };
 
 // Event handler
@@ -218,17 +227,16 @@ containerApp.style.opacity = 100;
 
 // Experimenting with a API
 const now = new Date();
-const options = { 
-  hour : 'numeric',
-  minute : 'numeric',
-  day : 'numeric',
-  month : 'numeric',
-  year : 'numeric',
-  weekday : 'long'
+const options = {
+  hour: 'numeric',
+  minute: 'numeric',
+  day: 'numeric',
+  month: 'numeric',
+  year: 'numeric',
+  weekday: 'long',
 };
 const locale = navigator.language;
 labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
-
 
 btnLogin.addEventListener('click', function (e) {
   // prevent form from submitting
@@ -247,16 +255,19 @@ btnLogin.addEventListener('click', function (e) {
 
     // Create current date
     const now = new Date();
-    const options = { 
-      hour : 'numeric',
-      minute : 'numeric',
-      day : 'numeric',
-      month : 'numeric',
-      year : 'numeric',
-      weekday : 'long'
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+      weekday: 'long',
     };
     // const locale = navigator.language;
-    labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, options).format(now);
+    labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      options
+    ).format(now);
     // const day = `${now.getDate()}`.padStart(2, 0);
     // const month = `${now.getMonth() + 1}`.padStart(2, 0);
     // const year = now.getFullYear();
@@ -468,10 +479,10 @@ labelBalance.addEventListener('click', function () {
 const num = 3884764.23;
 
 const optionsNum = {
-  style: "currency",
-  unit: "celsius",
-  currency: "EUR",
-}
+  style: 'currency',
+  unit: 'celsius',
+  currency: 'EUR',
+};
 console.log(new Intl.NumberFormat('en-US').format(num));
 console.log(new Intl.NumberFormat('fr-FR').format(num));
 console.log(new Intl.NumberFormat(navigator.language, optionsNum).format(num));
