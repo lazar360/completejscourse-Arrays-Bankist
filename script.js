@@ -464,3 +464,14 @@ labelBalance.addEventListener('click', function () {
 
 // future.setFullYear(2040);
 // console.log(future);
+
+const num = 3884764.23;
+
+const optionsNum = {
+  style: "currency",
+  unit: "celsius",
+  currency: "EUR",
+}
+console.log(new Intl.NumberFormat('en-US').format(num));
+console.log(new Intl.NumberFormat('fr-FR').format(num));
+console.log(new Intl.NumberFormat(navigator.language, optionsNum).format(num));
