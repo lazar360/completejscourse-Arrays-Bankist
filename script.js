@@ -122,7 +122,7 @@ const displayMovements = function (acc, sort = false) {
           </div>
           <div class="movements__date">${displayDate}</div>
 
-          <div class="movements__value">
+          <div class="movements__value"></div>
           ${formattedMov} 
           </div>
           </div>
@@ -176,9 +176,36 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+
+    // In each call, print the remaining time to UI
+    labelTimer.textContent = `${min} : ${sec}`;
+
+    // When 0 seconds, stop timer and log out user
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
+    }
+
+    // Decrease 1s
+    time--;
+  };
+
+  // Set time to 5 minutes
+  let time = 120;
+
+  // Call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 const deposits = movements.filter(mov => mov > 0);
 const withdrawal = movements.filter(mov => mov < 0);
-
 const balance = movements.reduce((acc, cur) => acc + cur, 0);
 
 const calcDisplayBalance = function (acc) {
@@ -186,13 +213,9 @@ const calcDisplayBalance = function (acc) {
   labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency);
 };
 
+////////////////////////////////
 // Event handler
-let currentAccount;
-
-// FAKE ALWAYS LOGGED IN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+let currentAccount, timer;
 
 // Experimenting with a API
 const now = new Date();
@@ -243,8 +266,15 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = '';
     inputLoginPin.blur();
 
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
+
     // updateUI
     updateUI(currentAccount);
+
+    // Reset the timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -288,6 +318,10 @@ btnLoan.addEventListener('click', function (e) {
 
       // update
       updateUI(currentAccount);
+
+      // Reset the timer
+      clearInterval(timer);
+      timer = startLogOutTimer();
     }, 2500);
     // clear field
     inputLoanAmount.value = '';
@@ -323,5 +357,3 @@ labelBalance.addEventListener('click', function () {
   );
   console.log(movementsUI);
 });
-
-// LECTURES
